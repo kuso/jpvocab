@@ -21,3 +21,5 @@ yarn.lock
 .idea/
 node_modules/
 .env*.local
+
+build/
