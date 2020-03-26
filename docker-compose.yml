@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+  web-base:
+    build:
+      context: .
+      dockerfile: Dockerfile_web_base
+    image: web-base/jpvocab:0.1
+    container_name: web-base-jpvocab
+
+  web-dev:
+    image: web-base/jpvocab:0.1
+    container_name: web-dev-jpvocab
+    volumes:
+      - .:/website
+    working_dir: /website
+    tty: true
+    ports:
+      - "3000:3000"
+    command: /bin/sh -c "npm run start"
+    depends_on:
+      - web-base
+
+  web-dev-local:
+    image: web-base/jpvocab:0.1
+    container_name: web-dev-jpvocab
+    volumes:
+      - .:/website
+    working_dir: /website
+    tty: true
+    ports:
+      - "3000:3000"
+    command: /bin/sh -c "npm run start:local"
+    depends_on:
+      - web-base
+
+  web-build:
+    image: web-base/jpvocab:0.1
+    container_name: web-build-jpvocab
+    volumes:
+      - .:/website
+    working_dir: /website
+    command: /bin/sh -c "npm run build"
+    depends_on:
+      - web-base
