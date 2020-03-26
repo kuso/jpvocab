@@ -41,6 +41,6 @@ services:
     volumes:
       - .:/website
     working_dir: /website
-    command: /bin/sh -c "npm run build"
+    command: /bin/sh -c "npm install && npm run build"
     depends_on:
       - web-base
