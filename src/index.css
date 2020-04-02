@@ -54,6 +54,10 @@ rt {
     pointer-events: auto !important;
 }
 
+.tooltip-inner {
+    padding: 1px;
+}
+
 .tooltip:hover {
      visibility: visible !important;
      opacity: 1 !important;
